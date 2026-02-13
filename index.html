@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shivam Mishra | Java Backend Developer</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --chocolate: #d2691e;      /* The Accent Color */
+            --chocolate-hover: #e67e22;
+            --dark-bg: #121212;
+            --card-bg: #1e1e1e;
+            --text-white: #f5f5f5;
+            --text-gray: #cfcfcf;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-white);
+            line-height: 1.6;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        /* --- 1. NAVIGATION BAR (Fixed Top) --- */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(18, 18, 18, 0.95); /* Dark see-through background */
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(210, 105, 30, 0.2);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--chocolate);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-white);
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--chocolate);
+        }
+
+        /* --- 2. HERO SECTION (Image Background) --- */
+        .hero {
+            height: 100vh; /* Full Screen Height */
+            /* Background Image with Dark Overlay */
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), 
+                        url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2070&auto=format&fit=crop'); 
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Parallax effect */
+            
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 20px;
+            margin-top: 0;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .hero-content h1 span { color: var(--chocolate); }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            color: var(--text-gray);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-main {
+            padding: 15px 40px;
+            background: var(--chocolate);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 20px rgba(210, 105, 30, 0.3);
+        }
+
+        .btn-main:hover {
+            background: var(--chocolate-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(210, 105, 30, 0.5);
+        }
+
+        /* --- SECTIONS --- */
+        section {
+            padding: 80px 20px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--chocolate);
+            margin: 10px auto 0;
+        }
+
+        /* --- CARDS --- */
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 10px;
+            border-bottom: 4px solid transparent;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-bottom-color: var(--chocolate);
+            background: #252525;
+        }
+
+        .card h3 { margin-bottom: 10px; font-size: 1.4rem; }
+        
+        .card-icon {
+            font-size: 2.5rem;
+            color: var(--chocolate);
+            margin-bottom: 20px;
+        }
+
+        .tech-stack {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--chocolate);
+            margin-bottom: 15px;
+            font-weight: 600;
+            font-family: monospace;
+        }
+
+        .card p {
+            margin-bottom: 20px;
+            color: var(--text-gray);
+            font-size: 0.95rem;
+        }
+
+        .btn-sm {
+            display: inline-block;
+            padding: 8px 20px;
+            border: 1px solid var(--chocolate);
+            color: var(--chocolate);
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: 0.3s;
+            align-self: flex-start;
+        }
+
+        .btn-sm:hover {
+            background: var(--chocolate);
+            color: white;
+        }
+
+        /* --- SKILLS --- */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+        .skill-tag {
+            background: #252525;
+            padding: 10px 25px;
+            border-radius: 30px;
+            border: 1px solid #333;
+            transition: 0.3s;
+        }
+        .skill-tag:hover {
+            border-color: var(--chocolate);
+            color: var(--chocolate);
+        }
+
+        /* --- CONTACT/FOOTER --- */
+        footer {
+            background: #0a0a0a;
+            padding: 50px 20px;
+            text-align: center;
+            border-top: 1px solid #333;
+        }
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 15px;
+            transition: 0.3s;
+        }
+        .social-links a:hover { color: var(--chocolate); }
+
+        /* Mobile Responsive */
+        @media(max-width: 768px) {
+            .navbar { padding: 15px 20px; }
+            .nav-links { display: none; } /* Hide menu on mobile for simplicity */
+            .hero-content h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">SHIVAM MISHRA</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header id="home" class="hero">
+        <div class="hero-content">
+            <h1>Hi, I'm <span>Shivam</span></h1>
+            <p>Java Backend Developer | Spring Boot & REST API Specialist</p>
+            <a href="Shivam_Mishra_Resume.pdf" target="_blank" class="btn-main">
+                <i class="fas fa-download"></i> Download Resume
+            </a>
+        </div>
+    </header>
+
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-container">
+                <span class="skill-tag">Java (J2EE)</span>
+                <span class="skill-tag">Spring Boot</span>
+                <span class="skill-tag">RESTful APIs</span>
+                <span class="skill-tag">Hibernate / JPA</span>
+                <span class="skill-tag">MySQL & SQL</span>
+                <span class="skill-tag">Data Structures</span>
+                <span class="skill-tag">Microservices</span>
+                <span class="skill-tag">Git & GitHub</span>
+                <span class="skill-tag">Postman</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="grid-cards">
+                
+                <div class="card">
+                    <div>
+                        <div class="card-icon"><i class="fas fa-wallet"></i></div>
+                        <h3>Personal Finance Manager</h3>
+                        <span class="tech-stack">Java, Spring Boot, MySQL, Hibernate</span>
+                        <p>A robust backend API for expense tracking and budgeting. Features include real-time overspending alerts, analytics using Java Streams, and secure DTO implementation.</p>
+                    </div>
+                    <a href="https://github.com/githubshivam2000/personal-finance-manager-api" target="_blank" class="btn-sm">
+                        <i class="fab fa-github"></i> View Code
+                    </a>
+                </div>
+
+                <div class="card">
+                    <div>
+                        <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+                        <h3>Gold & Silver Rate Tracker</h3>
+                        <span class="tech-stack">Java, Spring Boot, External APIs</span>
+                        <p>Real-time commodity price tracker integrating 3rd party APIs. Implements Scheduled Cron Jobs for auto-updates and stores historical trends in MySQL.</p>
+                    </div>
+                    <a href="https://github.com/githubshivam2000/gold-silver-rate" target="_blank" class="btn-sm">
+                        <i class="fab fa-github"></i> View Code
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <footer class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <p style="margin-bottom: 30px; color: #aaa;">Open for Backend Development opportunities. Let's connect!</p>
+            <div class="social-links">
+                <a href="mailto:aarjunmishra2001@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/shivam-mishra-b19b16302/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/githubshivam2000" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="tel:+918928479767"><i class="fas fa-phone"></i></a>
+            </div>
+            <p style="margin-top: 30px; font-size: 0.8rem;">&copy; 2026 Shivam Mishra.</p>
+        </footer>
+    </section>
+
+</body>
+</html>
